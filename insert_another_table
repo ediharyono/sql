@@ -1,0 +1,90 @@
+//INPUT DOSEN PEMBIMBING DARI DATA AKTIVITAS MAHASISWA////
+public function input_bimbing()
+	{
+ 
+		$query = $this->db->get('AktivitasMahasiswa'); 	
+		if( $query->num_rows() > 0) 
+		{
+			$result = $query->result(); //or $query->result_array() to get an array
+		}	
+		
+		foreach( $result as $rows )
+			{
+  	  	$this->load->library('Uuid');
+	  	  $this->load->model('bimbingmahasiswa/Bimbingmahasiswa_model_datatable','mk');	
+				
+        $data_bimbing_1 = array(						
+						'id_pduii_bimbing_mahasiswa' 		=> $this->uuid->v4(),				
+						'id_bimbing_mahasiswa'          =>'', 
+						'id_aktivitas'          => $rows->id_aktivitas, 
+						'id_kategori_kegiatan'   => $rows->id_sub_aktivitas,
+						//'id_kategori_kegiatan'   => '110403',//ta
+						'id_dosen'        => $rows->nidn_dosen_pembimbing,
+						'pembimbing_ke'      => '1', 
+						'id_prodi'       =>  $rows->id_prodi, 
+						'id_user'       =>'', 		
+						'id_aktivitas_dummy'          => $rows->id_aktivitas_dummy, 										
+						);
+            
+			$pembimbing2=$rows->nidn_dosen_pembimbing_2;			
+			if (!empty($pembimbing2)) {				
+			$data_bimbing_2 = array(						
+							'id_pduii_bimbing_mahasiswa' 		=> $this->uuid->v4(),				
+							'id_bimbing_mahasiswa'          =>'', 
+							'id_aktivitas'          => $rows->id_aktivitas, 
+							'id_kategori_kegiatan'   => $rows->id_sub_aktivitas_bimbing_2,							
+							//'id_kategori_kegiatan'   => '110403',//ta
+							'id_dosen'        => $rows->nidn_dosen_pembimbing_2,
+							'pembimbing_ke'      => '2', 
+							'id_prodi'       =>  $rows->id_prodi, 
+							'id_user'       =>'', 		
+							'id_aktivitas_dummy'          => $rows->id_aktivitas_dummy, 												
+							);
+			} else {}
+      
+			$pembimbing3=$rows->nidn_dosen_pembimbing_3;			
+			if (!empty($pembimbing3)) {				
+			$data_bimbing_3 = array(						
+							'id_pduii_bimbing_mahasiswa' 		=> $this->uuid->v4(),				
+							'id_bimbing_mahasiswa'          =>'', 
+							'id_aktivitas'          => $rows->id_aktivitas, 
+							'id_kategori_kegiatan'   => $rows->id_sub_aktivitas_bimbing_3,							
+							//'id_kategori_kegiatan'   => '110403',//ta
+							'id_dosen'        => $rows->nidn_dosen_pembimbing_3,
+							'pembimbing_ke'      => '3', 
+							'id_prodi'       =>  $rows->id_prodi, 
+							'id_user'       =>'', 		
+							'id_aktivitas_dummy'          => $rows->id_aktivitas_dummy, 												
+							);
+			} else {}
+      
+			$pembimbing4=$rows->nidn_dosen_pembimbing_4;			
+			if (!empty($pembimbing4)) {				
+			$data_bimbing_4 = array(						
+							'id_pduii_bimbing_mahasiswa' 		=> $this->uuid->v4(),				
+							'id_bimbing_mahasiswa'          =>'', 
+							'id_aktivitas'          => $rows->id_aktivitas, 
+							'id_kategori_kegiatan'   => $rows->id_sub_aktivitas_bimbing_4,							
+							//'id_kategori_kegiatan'   => '110403',//ta
+							'id_dosen'        => $rows->nidn_dosen_pembimbing_4,
+							'pembimbing_ke'      => '4', 
+							'id_prodi'       =>  $rows->id_prodi, 
+							'id_user'       =>'', 		
+							'id_aktivitas_dummy'          => $rows->id_aktivitas_dummy, 												
+							);
+			} else {}
+		
+		$insert = $this->mk->replace($data_bimbing_1);	
+          if (!empty($pembimbing2)) {			
+          $insert = $this->mk->replace($data_bimbing_2);	
+          }else{}	
+          if (!empty($pembimbing3)) {			
+            $insert = $this->mk->replace($data_bimbing_3);	
+            }else{}			
+            if (!empty($pembimbing4)) {			
+              $insert = $this->mk->replace($data_bimbing_4);	
+              }else{}				
+            }
+													/////////////////////////////////////////////////	
+													
+	}
