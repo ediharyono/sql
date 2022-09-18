@@ -6,3 +6,4 @@ SELECT P.nim,m.nama,SUM((69-ASCII(UPPER(p.nilai)))*Mk.sks)/SUM(Mk.sks) AS IP_Sem
 
 
 https://docplayer.info/30663024-Beberapa-query-yang-dapat-digunakan-dalam-memperoleh-informasi.html
+
