@@ -1,0 +1,1 @@
+SELECTp.nim,m.nama,SUM(mk.sks) AS JUMLAH_SKS FROMmatakuliah mk,peserta p,mahasiswa m,kuliah k WHEREp.nim = m.nim ANDp.kodekuliah = k.kodekuliah ANDk.kodemk = mk.kodemk GROUP BYp.nim,m.nama
