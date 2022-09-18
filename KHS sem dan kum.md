@@ -1,0 +1,1 @@
+ENAMPILKAN IPSEMESTER MAHASISWA SELECT P.nim,m.nama,k.semester,k.thnakademik,SUM((69-ASCII(UPPER(p.nilai)))*Mk.sks)/SUM(Mk.sks) AS IP_SemesterFROMKuliah k,peserta p,matakuliah mk,mahasiswa mWHERE p.nim = m.nimAND   K.kodemk = MK.kodemkAND K.kodekuliah = p.kodekuliahGROUP BY P.nim,m.nama,k.semester,k.thnakademik
